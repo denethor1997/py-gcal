@@ -12,11 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-import param
+import topo
+
+from topo.submodel import Model
 
 
-class Model(param.Parameterized):
-    __abstract = True
+class SensoryModel(Model):
+    pass
 
-    def __init__(self, **params):
-        super(Model, self).__init__(**params)
+
+class VisualInputModel
