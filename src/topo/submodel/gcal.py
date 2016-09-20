@@ -13,17 +13,8 @@
 # limitations under the License.
 # ==============================================================================
 import topo
-
-from topo.submodel import Model
-
-
-class SensoryModel(Model):
-    pass
+from topo.submodel.earlyvision import EarlyVisionModel
 
 
-class VisualInputModel(SensoryModel):
-    pass
-
-
-class EarlyVisionModel(VisualInputModel):
+class ModelGCAL(EarlyVisionModel):
     pass
