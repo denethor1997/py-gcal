@@ -17,9 +17,25 @@ from overrides import overrides
 
 import param
 
+from holoviews.core import BoundingBox
+
 
 class PatternGenerator(param.Parameterized):
     __abstract = True
+
+    bounds = BoundingBox(points = ((-0.5, -0.5), (0.5, 0.5)))
+    xdensity = 256
+    ydensity = 256
+    x = 0.0
+    y = 0.0
+    z = None
+    group = 'Pattern'
+    position = param.Composite(attribs=['x','y'])
+    orientation = 0.0
+    size = 1.0
+    scale = 1.0
+    offset = 0.0
+    output_fns = []
 
     def __init__(self, **params):
         super(PatternGenerator, self).__init__(**params)
@@ -27,10 +43,13 @@ class PatternGenerator(param.Parameterized):
     def __call__(self, **kwargs):
         pass
 
-    def function(self, p):
+    def channels(self, **params):
         pass
 
-    def channels(self, **params):
+    def num_channels(self):
+        return 1
+
+    def function(self, p):
         pass
 
 

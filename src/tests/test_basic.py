@@ -15,7 +15,13 @@
 import unittest
 
 
-class TestBasics(unittest.TestCase):
+class TestTuple(unittest.TestCase):
+    def test_tuple(self):
+        tuple1 = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
+        print [y for x, y, z in tuple1]
+
+
+class TestInherit(unittest.TestCase):
     def test_inherit1(self):
         print Fourth()
 

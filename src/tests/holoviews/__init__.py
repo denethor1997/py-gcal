@@ -12,12 +12,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-
-
-class Parameter(object):
-    pass
-
-
-class Parameterized(object):
-    def __init__(self, **params):
-        self.__dict__.update(**params)

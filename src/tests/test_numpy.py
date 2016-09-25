@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
+import unittest
+import numpy as np
 
 
-class Parameter(object):
-    pass
-
-
-class Parameterized(object):
-    def __init__(self, **params):
-        self.__dict__.update(**params)
+class TestNumpy(unittest.TestCase):
+    def test_min(self):
+        points = ((-1.0, -1.0), (1.0, 1.0))
+        l = np.min([y for x, y in points])
+        self.assertEqual(l, -1.0)

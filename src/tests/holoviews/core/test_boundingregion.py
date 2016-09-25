@@ -12,12 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
+import unittest
+
+import holoviews
+from holoviews.core.boundingregion import AARectangle, BoundingRegion, BoundingBox
 
 
-class Parameter(object):
-    pass
+class TestAARectangle(unittest.TestCase):
+    def test_lbrt(self):
+        rec = AARectangle(((-1.0, 1.0), (-1.0, 1.0)))
+        l, b, r, t = rec.lbrt()
+        self.assertEqual(l, -1.0)
+        self.assertEqual(b, -1.0)
+        self.assertEqual(r, 1.0)
+        self.assertEqual(t, 1.0)
 
 
-class Parameterized(object):
-    def __init__(self, **params):
-        self.__dict__.update(**params)
+class TestBoundingRegion(unittest.TestCase):
+    def test_something(self):
+        self.assertEqual(True, False)
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -13,3 +13,27 @@
 # limitations under the License.
 # ==============================================================================
 from .parameterized import Parameterized, Parameter
+
+
+class Composite(Parameter):
+    __slots__ = ['attribs', 'objtype']
+
+    def __init__(self, attribs=None, **params):
+        if attribs is None:
+            attribs = []
+        super(Composite, self).__init__(**params)
+        self.attribs = attribs
+
+    def __get__(self, instance, owner):
+        if not instance:
+            return [getattr(owner, a) for a in self.attribs]
+        else:
+            return [getattr(instance, a) for a in self.attribs]
+
+    def __set__(self, instance, value):
+        if not instance:
+            for a, v in zip(self.attribs, value):
+                setattr(self.objtype, a, v)
+        else:
+            for a, v in zip(self.attribs, value):
+                setattr(instance, a, v)
