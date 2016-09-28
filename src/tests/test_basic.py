@@ -20,6 +20,15 @@ class TestTuple(unittest.TestCase):
         tuple1 = ((1, 2, 3), (4, 5, 6), (7, 8, 9))
         print [y for x, y, z in tuple1]
 
+    def test_tuple1(self):
+        items = (1, 3, 6)
+        TupleContainer(*items)
+
+
+class TupleContainer(object):
+    def __init__(self, *tuple1):
+        print tuple1
+
 
 class TestInherit(unittest.TestCase):
     def test_inherit1(self):

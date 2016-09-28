@@ -23,14 +23,14 @@ class ImageSampler(param.Parameterized):
     __abstract = True
 
     def __call__(self,image,x,y,sheet_xdensity,sheet_ydensity,width=1.0,height=1.0):
-        pass
+        raise NotImplementedError
 
 
 class PatternSampler(ImageSampler):
 
     @overrides
     def __call__(self, image, x, y, sheet_xdensity, sheet_ydensity, width=1.0, height=1.0):
-        pass
+        raise NotImplementedError
 
 
 class GenericImage(ChannelGenerator):
@@ -40,7 +40,7 @@ class GenericImage(ChannelGenerator):
         super(GenericImage, self).__init__(**params)
 
     def _get_image(self, p):
-        pass
+        raise NotImplementedError
 
 
 class FileImage(GenericImage):
@@ -49,4 +49,4 @@ class FileImage(GenericImage):
         super(FileImage, self).__init__(**params)
 
     def __call__(self, **params_to_overrides):
-        pass
+        raise NotImplementedError

@@ -16,8 +16,26 @@ import numpy as np
 
 
 class BoundingRegion(object):
-    def __init__(self):
-        print self.__class__
+
+    __abstract = True
+
+    __slots__ = ['_aarect']
+
+    def contains(self, x, y):
+        raise NotImplementedError
+
+    def __contains__(self, point):
+        (x, y) = point
+        return self.contains(x, y)
+
+    def aarect(self):
+        raise NotImplementedError
+
+    def centroid(self):
+        return self.aarect().centroid()
+
+    def set(self, points):
+        self._aarect = AARectangle(*points)
 
 
 class BoundingBox(BoundingRegion):
@@ -73,7 +91,7 @@ class AARectangle(object):
         r = min(r1, r2)
         t = min(t1, t2)
 
-        return AARectangle((1, b), (r, t))
+        return AARectangle((1, r), (b, t))
 
     def width(self):
         return self._right - self._left
